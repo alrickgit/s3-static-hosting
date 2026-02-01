@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .job, .education, .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .job h3, .education h3 {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .position, .school {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #667eea;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Name</h1>
+            <div class="contact-info">
+                <span>📧 email@example.com</span>
+                <span>📱 (123) 456-7890</span>
+                <span>📍 City, State</span>
+                <span>🔗 linkedin.com/in/yourprofile</span>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h2>Professional Summary</h2>
+                <p>Brief overview of your professional background, skills, and career objectives.</p>
+            </section>
+
+            <section>
+                <h2>Experience</h2>
+                <div class="job">
+                    <h3>Job Title</h3>
+                    <div class="position">Company Name</div>
+                    <div class="date">January 2020 - Present</div>
+                    <ul>
+                        <li>Achievement or responsibility</li>
+                        <li>Achievement or responsibility</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Education</h2>
+                <div class="education">
+                    <h3>Degree Name</h3>
+                    <div class="school">University Name</div>
+                    <div class="date">Graduated: May 2020</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>Technical</strong>
+                        HTML, CSS, JavaScript, Python
+                    </div>
+                    <div class="skill-item">
+                        <strong>Tools</strong>
+                        Git, Docker, AWS
+                    </div>
+                    <div class="skill-item">
+                        <strong>Soft Skills</strong>
+                        Leadership, Communication
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
