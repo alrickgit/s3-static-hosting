@@ -23,3 +23,8 @@ output "website_url" {
   value       = "https://${aws_route53_record.website_alias.name}"
 }
 
+output "s3_static_url" {
+  description = "S3 website endpoint"
+  value       = aws_s3_bucket.website_bucket.website_endpoint
+}
+

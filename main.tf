@@ -10,8 +10,8 @@ resource "aws_route53_record" "website_alias" {
   name    = "homelab24.online"
   type    = "A"
   alias {
-    name                   = aws_s3_bucket.website_bucket.website_domain
-    zone_id                = aws_s3_bucket.website_bucket.hosted_zone_id
+    name                   = aws_cloudfront_distribution.website_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
@@ -21,8 +21,10 @@ resource "aws_route53_record" "website_alias_www" {
   name    = "www.homelab24.online"
   type    = "A"
   alias {
-    name                   = aws_s3_bucket.website_bucket.website_domain
-    zone_id                = aws_s3_bucket.website_bucket.hosted_zone_id
+    name                   = aws_cloudfront_distribution.website_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
+
+
