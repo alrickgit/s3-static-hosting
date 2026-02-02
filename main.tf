@@ -14,6 +14,7 @@ resource "aws_route53_record" "website_alias" {
     zone_id                = aws_cloudfront_distribution.website_distribution.hosted_zone_id
     evaluate_target_health = false
   }
+  depends_on = [ aws_route53_zone.homelab_zone ]
 }
 
 resource "aws_route53_record" "website_alias_www" {
@@ -25,6 +26,7 @@ resource "aws_route53_record" "website_alias_www" {
     zone_id                = aws_cloudfront_distribution.website_distribution.hosted_zone_id
     evaluate_target_health = false
   }
+  depends_on = [ aws_route53_zone.homelab_zone ]
 }
 
 

@@ -1,6 +1,7 @@
 data "aws_route53_zone" "homelab_zone" {
   name         = "homelab24.online"
   private_zone = false
+  depends_on = [ aws_route53_zone.homelab_zone ]
 }
 
 data "aws_route53_records" "existing_records" {
