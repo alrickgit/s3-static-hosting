@@ -1,0 +1,380 @@
+{
+  "version": 4,
+  "terraform_version": "1.11.2",
+  "serial": 87,
+  "lineage": "e7aaba02-0dc1-811e-81b4-56749dc7859b",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "248765402791",
+            "arn": "arn:aws:iam::248765402791:user/eksadmin",
+            "id": "248765402791",
+            "user_id": "AIDATT24SZ2TZG6EN2VVX"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "allow_public_read",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "2810174097",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::static-website-248765402791/*\",\n      \"Principal\": \"*\"\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::static-website-248765402791/*\",\"Principal\":\"*\"}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "s3:GetObject"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "*"
+                    ],
+                    "type": "*"
+                  }
+                ],
+                "resources": [
+                  "arn:aws:s3:::static-website-248765402791/*"
+                ],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "website_bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::static-website-248765402791",
+            "bucket": "static-website-248765402791",
+            "bucket_domain_name": "static-website-248765402791.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_region": "ap-south-1",
+            "bucket_regional_domain_name": "static-website-248765402791.s3.ap-south-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "b599f84661a7bad551f9426637c09067bf26213a6743a393395da5a35b9a3007",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z11RGJOFQNVJUP",
+            "id": "static-website-248765402791",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "{\"Statement\":[{\"Action\":\"s3:GetObject\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":\"arn:aws:s3:::static-website-248765402791/*\"}],\"Version\":\"2012-10-17\"}",
+            "region": "ap-south-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [
+              {
+                "error_document": "error.html",
+                "index_document": "index.html",
+                "redirect_all_requests_to": "",
+                "routing_rules": "[{\"Condition\":{\"KeyPrefixEquals\":\"docs/\"},\"Redirect\":{\"ReplaceKeyPrefixWith\":\"documents/\"}}]"
+              }
+            ],
+            "website_domain": "s3-website.ap-south-1.amazonaws.com",
+            "website_endpoint": "static-website-248765402791.s3-website.ap-south-1.amazonaws.com"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "data.aws_caller_identity.current"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_policy",
+      "name": "allow_public_read",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "static-website-248765402791",
+            "id": "static-website-248765402791",
+            "policy": "{\"Statement\":[{\"Action\":\"s3:GetObject\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":\"arn:aws:s3:::static-website-248765402791/*\"}],\"Version\":\"2012-10-17\"}",
+            "region": "ap-south-1"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website_bucket",
+            "aws_s3_bucket_public_access_block.website_bucket_public_access",
+            "data.aws_caller_identity.current",
+            "data.aws_iam_policy_document.allow_public_read"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "website_bucket_public_access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "block_public_acls": false,
+            "block_public_policy": false,
+            "bucket": "static-website-248765402791",
+            "id": "static-website-248765402791",
+            "ignore_public_acls": false,
+            "region": "ap-south-1",
+            "restrict_public_buckets": false,
+            "skip_destroy": null
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website_bucket",
+            "data.aws_caller_identity.current"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_website_configuration",
+      "name": "website_config",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "static-website-248765402791",
+            "error_document": [
+              {
+                "key": "error.html"
+              }
+            ],
+            "expected_bucket_owner": "",
+            "id": "static-website-248765402791",
+            "index_document": [
+              {
+                "suffix": "index.html"
+              }
+            ],
+            "redirect_all_requests_to": [],
+            "region": "ap-south-1",
+            "routing_rule": [
+              {
+                "condition": [
+                  {
+                    "http_error_code_returned_equals": "",
+                    "key_prefix_equals": "docs/"
+                  }
+                ],
+                "redirect": [
+                  {
+                    "host_name": "",
+                    "http_redirect_code": "",
+                    "protocol": "",
+                    "replace_key_prefix_with": "documents/",
+                    "replace_key_with": ""
+                  }
+                ]
+              }
+            ],
+            "routing_rules": "[{\"Condition\":{\"KeyPrefixEquals\":\"docs/\"},\"Redirect\":{\"ReplaceKeyPrefixWith\":\"documents/\"}}]",
+            "website_domain": "s3-website.ap-south-1.amazonaws.com",
+            "website_endpoint": "static-website-248765402791.s3-website.ap-south-1.amazonaws.com"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website_bucket",
+            "aws_s3_bucket_public_access_block.website_bucket_public_access",
+            "aws_s3_object.error_html",
+            "aws_s3_object.index_html",
+            "data.aws_caller_identity.current"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_object",
+      "name": "error_html",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acl": "public-read",
+            "arn": "arn:aws:s3:::static-website-248765402791/error.html",
+            "bucket": "static-website-248765402791",
+            "bucket_key_enabled": false,
+            "cache_control": "",
+            "checksum_algorithm": null,
+            "checksum_crc32": "",
+            "checksum_crc32c": "",
+            "checksum_crc64nvme": "",
+            "checksum_sha1": "",
+            "checksum_sha256": "",
+            "content": null,
+            "content_base64": null,
+            "content_disposition": "inline",
+            "content_encoding": "",
+            "content_language": "",
+            "content_type": "text/html",
+            "etag": "62d2f76c5e36cb29a7152acf112e37c9",
+            "force_destroy": false,
+            "id": "static-website-248765402791/error.html",
+            "key": "error.html",
+            "kms_key_id": null,
+            "metadata": {},
+            "object_lock_legal_hold_status": "",
+            "object_lock_mode": "",
+            "object_lock_retain_until_date": "",
+            "override_provider": [],
+            "region": "ap-south-1",
+            "server_side_encryption": "AES256",
+            "source": "./error.html",
+            "source_hash": null,
+            "storage_class": "STANDARD",
+            "tags": {},
+            "tags_all": {},
+            "version_id": "",
+            "website_redirect": ""
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website_bucket",
+            "aws_s3_bucket_public_access_block.website_bucket_public_access",
+            "data.aws_caller_identity.current"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_object",
+      "name": "index_html",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acl": "public-read",
+            "arn": "arn:aws:s3:::static-website-248765402791/index.html",
+            "bucket": "static-website-248765402791",
+            "bucket_key_enabled": false,
+            "cache_control": "",
+            "checksum_algorithm": null,
+            "checksum_crc32": "",
+            "checksum_crc32c": "",
+            "checksum_crc64nvme": "",
+            "checksum_sha1": "",
+            "checksum_sha256": "",
+            "content": null,
+            "content_base64": null,
+            "content_disposition": "inline",
+            "content_encoding": "",
+            "content_language": "",
+            "content_type": "text/html",
+            "etag": "09af9d264d5f97f6bfe0175467d0d75f",
+            "force_destroy": false,
+            "id": "static-website-248765402791/index.html",
+            "key": "index.html",
+            "kms_key_id": null,
+            "metadata": {},
+            "object_lock_legal_hold_status": "",
+            "object_lock_mode": "",
+            "object_lock_retain_until_date": "",
+            "override_provider": [],
+            "region": "ap-south-1",
+            "server_side_encryption": "AES256",
+            "source": "./index.html",
+            "source_hash": null,
+            "storage_class": "STANDARD",
+            "tags": {},
+            "tags_all": {},
+            "version_id": "",
+            "website_redirect": ""
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.website_bucket",
+            "aws_s3_bucket_public_access_block.website_bucket_public_access",
+            "data.aws_caller_identity.current"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

@@ -22,6 +22,15 @@ resource "aws_s3_bucket_website_configuration" "website_config" {
     key = "error.html"
   }
 
+  routing_rule {
+    condition {
+      key_prefix_equals = "docs/"
+    }
+    redirect {
+      replace_key_prefix_with = "documents/"
+    }
+  }
+
   depends_on = [ aws_s3_object.error_html, aws_s3_object.index_html ]
 }
 
@@ -29,7 +38,7 @@ data "aws_iam_policy_document" "allow_public_read" {
   statement {
     principals {
     identifiers = ["*"]
-    type        = "AWS"
+    type        = "*"
     }
     actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.website_bucket.arn}/*"]
@@ -40,20 +49,28 @@ data "aws_iam_policy_document" "allow_public_read" {
 resource "aws_s3_bucket_policy" "allow_public_read" {
   bucket = aws_s3_bucket.website_bucket.id
   policy = data.aws_iam_policy_document.allow_public_read.json
+
+  depends_on = [aws_s3_bucket_public_access_block.website_bucket_public_access]
 }
 
 resource "aws_s3_object" "index_html" {
-  bucket = aws_s3_bucket.website_bucket.bucket
-  key    = "index.html"
-  source = "./index.html"
+  bucket              = aws_s3_bucket.website_bucket.bucket
+  key                 = "index.html"
+  source              = "./index.html"
+  content_type        = "text/html"
+  content_disposition = "inline"
+  etag                = filemd5("./index.html")
 
-  etag = filemd5("./index.html")
+  depends_on = [aws_s3_bucket_public_access_block.website_bucket_public_access]
 }
 
 resource "aws_s3_object" "error_html" {
-  bucket = aws_s3_bucket.website_bucket.bucket
-  key    = "error.html"
-  source = "./error.html"
+  bucket              = aws_s3_bucket.website_bucket.bucket
+  key                 = "error.html"
+  source              = "./error.html"
+  content_type        = "text/html"
+  content_disposition = "inline"
+  etag                = filemd5("./error.html")
 
-  etag = filemd5("./error.html")
+  depends_on = [aws_s3_bucket_public_access_block.website_bucket_public_access]
 }
